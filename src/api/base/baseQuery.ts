@@ -12,13 +12,21 @@ export const useBaseQuery = (keys: string[], url: string) => {
     return useQuery({
         queryKey: keys,
         queryFn: async () => {
-            const response = await axiosInstance.get(url, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            try {
+                const response = await axiosInstance.get(url, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                return response.data;
+            } catch (error:any) {
+                if(error.response.status === 401){
+                    storage.removeLocalStorage("token");
+                    window.location.href = "/auth/login";
                 }
+                throw error
+            }
 
-            });
-            return response.data;
         }
     })
 }

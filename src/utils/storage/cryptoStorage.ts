@@ -26,7 +26,10 @@ const storage = {
         } else {
             return null;
         }
-    }
+    },
+    removeLocalStorage: (key: string) => {
+        localStorage.removeItem(key);
+    },
 }
 
 

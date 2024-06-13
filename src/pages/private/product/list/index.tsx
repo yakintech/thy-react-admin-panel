@@ -3,7 +3,7 @@ import { useBaseQuery } from '../../../../api/base/baseQuery'
 
 function List() {
 
-  const {data, isLoading} = useBaseQuery(["products"], "api/products")
+  const {data, isLoading} = useBaseQuery(["products"], "api/productsss")
 
   return <>
     {
