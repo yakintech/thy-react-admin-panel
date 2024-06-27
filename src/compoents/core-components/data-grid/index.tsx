@@ -1,23 +1,41 @@
 import { Button } from '@mui/material'
+import { trTR, enUS, arSD } from '@mui/x-data-grid/locales';
 import { DataGrid, DataGridProps } from '@mui/x-data-grid'
 import React from 'react'
 
 
-interface TDataGridProps extends DataGridProps{
+interface TDataGridProps extends DataGridProps {
     deleteRow?: (id: number) => void
     detailRow?: (id: number) => void
     loading: boolean
+    pageSize?: number
 }
 
 function TDataGrid(props: TDataGridProps) {
 
-    if(props.loading){
+    let currentLang = localStorage.getItem("lang") || "en"
+
+    let localeText = enUS;
+
+    switch (currentLang) {
+        case "en":
+            localeText = enUS
+            break;
+        case "tr":
+            localeText = trTR
+            break;
+        case "ar":
+            localeText = arSD
+            break;
+    }
+
+    if (props.loading) {
         return <></>
     }
 
     //if deleteRow has add deleteButton column
 
-    if(props.deleteRow && props.columns){
+    if (props.deleteRow && props.columns) {
 
         const columns = props.columns as any[]
         columns.push({
@@ -30,7 +48,7 @@ function TDataGrid(props: TDataGridProps) {
         })
     }
 
-    if(props.detailRow && props.columns){
+    if (props.detailRow && props.columns) {
 
         const columns = props.columns as any[]
         columns.push({
@@ -44,7 +62,13 @@ function TDataGrid(props: TDataGridProps) {
     }
 
 
-    return <DataGrid {...props}/>
+    return <DataGrid
+        {...props}
+        localeText={localeText.components.MuiDataGrid.defaultProps.localeText}
+        initialState={{
+            pagination: { paginationModel: { pageSize: props.pageSize ?? 5 } },
+          }}
+    />
 }
 
 export default TDataGrid

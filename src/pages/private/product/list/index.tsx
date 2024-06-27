@@ -39,6 +39,7 @@ function List() {
         deleteRow={deleteRow} 
         detailRow={(id: number) => navigate(`/products/detail/${id}`)}
         loading={isLoading}
+        pageSize={10}
         />
     }
   </>
