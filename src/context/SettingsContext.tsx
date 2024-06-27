@@ -24,4 +24,5 @@ export type SettingsContextType = {
 
 interface Settings {
     direction : "rtl" | "ltr"
+    primaryColor?: string
 }

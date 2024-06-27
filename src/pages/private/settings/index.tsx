@@ -7,6 +7,11 @@ function Settings() {
     const { settings, setSettings } = useContext(SettingsContext) as SettingsContextType
 
     return <>
+        <div>
+            <label htmlFor="">Color</label>
+            <input type="color" value={settings.primaryColor} onChange={(e) => setSettings({ primaryColor: e.target.value, direction:settings.direction})} />
+        </div>
+
 
         <div>
             <FormGroup>

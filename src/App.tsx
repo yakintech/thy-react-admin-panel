@@ -11,13 +11,12 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: colors.purple[500]
+        main: settings.primaryColor || colors.blue[500]
       }
     },
     direction: settings.direction
   })
   return <>
-    
       <ThemeProvider
         theme={theme}
       >
