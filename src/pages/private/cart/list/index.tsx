@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeItem } from '../../../../store/CartSlice'
+import { clearCart, decreaseQuantity, increaseQuantity, removeItem } from '../../../../store/CartSlice'
 
 function List() {
   //reduxta global state useSelector ile ulaşırız
@@ -9,9 +9,14 @@ function List() {
 
   let dispatch = useDispatch()
 
+  
 
   const remove = (id: number) => {
     dispatch(removeItem(id))
+  }
+
+  const empty = () => {
+    dispatch(clearCart())
   }
 
   let totalPrice = 0
@@ -26,15 +31,22 @@ function List() {
       {
         cartState.items.map((item: any) => {
           return <>
-            <li key={item.id}>{item.name} - {item.unitPrice.toFixed(2)} * {item.quantity} = {(item.unitPrice * item.quantity).toFixed(2)}
+            <li style={{margin:10}} key={item.id}>{item.name} - {item.unitPrice.toFixed(2)} * {item.quantity} = {(item.unitPrice * item.quantity).toFixed(2)}
+              <button onClick={() => dispatch(increaseQuantity(item.id))} style={{ marginLeft: 10 }}>+</button>
+
+              <button onClick={() => dispatch(decreaseQuantity(item.id))} style={{ marginLeft: 10 }}>-</button>
 
               <button onClick={() => remove(item.id)} style={{ marginLeft: 20 }}>Remove</button>
+
             </li>
 
           </>
         })
       }
     </ul>
+
+    <hr />
+    <button onClick={empty}>Empty Cart</button>
 
   </>
 }

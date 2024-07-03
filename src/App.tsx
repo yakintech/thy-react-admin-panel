@@ -1,8 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Pages from './pages'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Input, colors } from '@mui/material'
 import { SettingsContext, SettingsContextType } from './context/SettingsContext';
+import { useDispatch } from 'react-redux';
+import { loadCart } from './store/CartSlice';
 
 function App() {
 
@@ -16,6 +18,14 @@ function App() {
     },
     direction: settings.direction
   })
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    
+    dispatch(loadCart())
+  }, [])
+  
   return <>
       <ThemeProvider
         theme={theme}

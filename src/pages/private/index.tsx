@@ -7,6 +7,7 @@ import Supplier from './supplier'
 import Settings from './settings'
 import { useTranslation } from 'react-i18next'
 import CartMain from './cart'
+import { useSelector } from 'react-redux'
 
 function PrivateLayout() {
 
@@ -37,6 +38,9 @@ function PrivateLayout() {
     }
   }
 
+
+  const cartState = useSelector((state: any) => state.cart)
+
   return <>
     <ul style={{display:'flex', justifyContent:'space-between'}} >
       <li><Link to={'/'}>{t("home")}</Link></li>
@@ -44,7 +48,7 @@ function PrivateLayout() {
       <li><Link to={'/products/add'}>{t("addProduct")}</Link></li>
       <li><Link to={'/suppliers'}>{t("suppliers")}</Link></li>
       <li><Link to={'/settings'}>{t("settings")}</Link></li>
-      <li><Link to={'/cart'}>{t("cart")}</Link></li>
+      <li><Link to={'/cart'}>{t("cart")}<span style={{color:'red'}}>({cartState.items.length})</span></Link></li>
       <li>
         <select onChange={change} value={lang ?? "en"}>
           <option value="en">EN</option>
