@@ -4,4 +4,5 @@ export let i18Tr = {
     "suppliers": "Tedarikçiler",
     "settings": "Ayarlar",
     "addProduct": "Ürün Ekle",
+    "cart": "Sepet",
 }

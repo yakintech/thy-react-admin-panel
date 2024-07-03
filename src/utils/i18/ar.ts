@@ -4,4 +4,5 @@ export let i18Ar = {
     "suppliers": "الموردين",
     "settings": "الإعدادات",
     "addProduct": "إضافة منتج",
+    "cart": "السلة",
 }

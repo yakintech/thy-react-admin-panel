@@ -6,6 +6,7 @@ import { AuthContext, AuthContextType } from '../../context/AuthContext'
 import Supplier from './supplier'
 import Settings from './settings'
 import { useTranslation } from 'react-i18next'
+import CartMain from './cart'
 
 function PrivateLayout() {
 
@@ -43,6 +44,7 @@ function PrivateLayout() {
       <li><Link to={'/products/add'}>{t("addProduct")}</Link></li>
       <li><Link to={'/suppliers'}>{t("suppliers")}</Link></li>
       <li><Link to={'/settings'}>{t("settings")}</Link></li>
+      <li><Link to={'/cart'}>{t("cart")}</Link></li>
       <li>
         <select onChange={change} value={lang ?? "en"}>
           <option value="en">EN</option>
@@ -58,6 +60,7 @@ function PrivateLayout() {
       <Route path='/products/*' element={<Product />} />
       <Route path='/suppliers/*' element={<Supplier/>} />
       <Route path='/settings' element={<Settings/>} />
+      <Route path='/cart' element={<CartMain/>} />
       <Route path='*' element={<Dashboard />} />
     </Routes>
   </>

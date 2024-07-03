@@ -32,7 +32,8 @@ export const AuthProvider = ({ children }: any) => {
         })
         .catch(err => {
             setisAuth(false)
-            window.location.href = "/auth/login"
+            setisLoading(false)
+            //window.location.href = "/auth/login"
         })
     }
     else{

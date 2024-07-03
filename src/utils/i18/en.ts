@@ -4,4 +4,5 @@ export let i18En = {
     "suppliers": "Suppliers",
     "settings": "Settings",
     "addProduct": "Add Product",
+    "cart": "Cart",
 }
