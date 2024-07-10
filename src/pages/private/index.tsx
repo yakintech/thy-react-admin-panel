@@ -4,7 +4,6 @@ import Product from './product'
 import Dashboard from './dashboard'
 import { AuthContext, AuthContextType } from '../../context/AuthContext'
 import Supplier from './supplier'
-import Settings from './settings'
 import { useTranslation } from 'react-i18next'
 import CartMain from './cart'
 import { useSelector } from 'react-redux'
@@ -63,7 +62,6 @@ function PrivateLayout() {
       <Route path='/' element={<Dashboard />} />
       <Route path='/products/*' element={<Product />} />
       <Route path='/suppliers/*' element={<Supplier/>} />
-      <Route path='/settings' element={<Settings/>} />
       <Route path='/cart' element={<CartMain/>} />
       <Route path='*' element={<Dashboard />} />
     </Routes>

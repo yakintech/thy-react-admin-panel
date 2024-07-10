@@ -2,6 +2,7 @@ import { TextField } from '@mui/material'
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { SettingsContext, SettingsContextType } from '../../../../context/SettingsContext'
+import TAsyncAutocomplete from '../../../../compoents/core-components/autocomplete'
 
 
 function Add() {
@@ -11,6 +12,7 @@ function Add() {
 
   return <>
     <div dir={settings.direction}>
+      <TAsyncAutocomplete url="api/categories" onchange={(value) => console.log(value)} />
       <TextField label="Name" value={name} onChange={(e) => setname(e.target.value)} />
     </div>
   </>

@@ -5,8 +5,11 @@ import { Input, colors } from '@mui/material'
 import { SettingsContext, SettingsContextType } from './context/SettingsContext';
 import { useDispatch } from 'react-redux';
 import { loadCart } from './store/CartSlice';
+import { useScrollToTop } from './hooks/useScrollToTop';
 
 function App() {
+
+  useScrollToTop()
 
   const {settings} = useContext(SettingsContext) as SettingsContextType
 
